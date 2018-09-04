@@ -1,4 +1,5 @@
-import { uglify } from "rollup-plugin-uglify";
+// import { uglify } from "rollup-plugin-uglify";
+import { terser } from "rollup-plugin-terser";
 import babel from 'rollup-plugin-babel';
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
@@ -12,7 +13,7 @@ export default {
   output: {
     name: 'main',
     file: './dist/wxpay-simple-min.js',
-    format: 'cjs',
+    format: 'es',
   },
   plugins: [
     resolve({
@@ -29,6 +30,6 @@ export default {
       runtimeHelpers: true,
       exclude: 'node_modules/**', // 排除node_modules 下的文件
     }),
-    uglify()
+    terser()
   ]
 }
